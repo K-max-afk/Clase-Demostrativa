@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lengua y Literatura - La Reseña Cinematográfica</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS en la raíz -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -21,7 +22,6 @@
 
         <!-- PANTALLA 1: Inicio -->
         <section class="screen active" id="screen-1">
-            <div class="curtains"></div>
             <div class="hero-content">
                 <h1 class="glow-red">Lengua y Literatura</h1>
                 <h2 class="glow-gold">Los primeros escritos</h2>
@@ -38,15 +38,15 @@
             <div class="dots-container">
                 <div class="interactive-dot" onclick="revealDot(this, 1)">
                     <span class="dot-num">1</span>
-                    <img src="img/placeholder1.png" alt="Elemento 1" class="img-hidden">
+                    <img src="placeholder1.png" alt="Elemento 1" class="img-hidden">
                 </div>
                 <div class="interactive-dot" onclick="revealDot(this, 2)">
                     <span class="dot-num">2</span>
-                    <img src="img/placeholder2.png" alt="Elemento 2" class="img-hidden">
+                    <img src="placeholder2.png" alt="Elemento 2" class="img-hidden">
                 </div>
                 <div class="interactive-dot" onclick="revealDot(this, 3)">
                     <span class="dot-num">3</span>
-                    <img src="img/placeholder3.png" alt="Elemento 3" class="img-hidden">
+                    <img src="placeholder3.png" alt="Elemento 3" class="img-hidden">
                 </div>
             </div>
         </section>
@@ -65,16 +65,22 @@
             <h2>Propósitos de la Reseña</h2>
             <div class="cards-3d-container">
                 <div class="card-3d" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front">Informa</div>
-                    <div class="card-back">Aporta datos clave sobre el director, año y producción.</div>
+                    <div class="card-inner">
+                        <div class="card-front">Informa</div>
+                        <div class="card-back">Aporta datos clave sobre el director, año y producción.</div>
+                    </div>
                 </div>
                 <div class="card-3d" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front">Resume</div>
-                    <div class="card-back">Sintetiza los aspectos esenciales de la trama sin revelarla completa.</div>
+                    <div class="card-inner">
+                        <div class="card-front">Resume</div>
+                        <div class="card-back">Sintetiza los aspectos esenciales de la trama sin spoilers.</div>
+                    </div>
                 </div>
                 <div class="card-3d" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front">Valora</div>
-                    <div class="card-back">Ofrece una opinión fundamentada sobre la calidad técnica y narrativa.</div>
+                    <div class="card-inner">
+                        <div class="card-front">Valora</div>
+                        <div class="card-back">Ofrece una opinión fundamentada sobre la calidad técnica.</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -108,15 +114,15 @@
             <div class="clapperboard-interactive" onclick="toggleClapper()">
                 <div class="clapper-top">🎬 Clic para desplegar</div>
                 <div class="clapper-body hidden" id="clapper-info">
-                    <p><strong>Director:</strong> Cristopher Nolan</p>
+                    <p><strong>Director:</strong> Christopher Nolan</p>
                     <p><strong>Año:</strong> 2023</p>
-                    <p><strong>Género:</strong> Biográfico / Drama</p>
+                    <p><strong>Género:</strong> Drama / Historia</p>
                     <p><strong>Duración:</strong> 180 min</p>
                 </div>
             </div>
         </section>
 
-        <!-- PANTALLA 7: Carrete de Película (Trama) -->
+        <!-- PANTALLA 7: Carrete de Película -->
         <section class="screen" id="screen-7">
             <h2>Estructura de la Trama</h2>
             <div class="film-reel">
@@ -141,7 +147,7 @@
                     <h3>Aspectos por Mejorar</h3>
                     <ul>
                         <li>Ritmo lento en el segundo acto</li>
-                        <li>Mezcla de audio confusa</li>
+                        <li>Mezcla de audio compleja</li>
                     </ul>
                 </div>
             </div>
@@ -157,20 +163,20 @@
             </div>
         </section>
 
-        <!-- PANTALLA 10: Resaltado de Elementos -->
+        <!-- PANTALLA 10: Resaltado de Texto -->
         <section class="screen" id="screen-10">
             <h2>Análisis de Texto</h2>
             <div class="highlight-controls">
-                <button onclick="highlightText('tecnico')">Datos técnicos</button>
-                <button onclick="highlightText('trama')">Trama</button>
-                <button onclick="highlightText('critico')">Juicio crítico</button>
-                <button onclick="highlightText('recomendacion')">Recomendación</button>
+                <button class="btn-gold" onclick="highlightText('tecnico')">Datos técnicos</button>
+                <button class="btn-gold" onclick="highlightText('trama')">Trama</button>
+                <button class="btn-gold" onclick="highlightText('critico')">Juicio crítico</button>
+                <button class="btn-gold" onclick="highlightText('recomendacion')">Recomendación</button>
             </div>
             <div class="sample-text" id="sample-review">
-                <span class="hl-tecnico">Dirigida por Jane Doe en 2022 (120 min).</span>
-                <span class="hl-trama">La película narra la travesía de un científico en búsqueda de agua limpia.</span>
-                <span class="hl-critico">Destaca por su impresionante banda sonora, aunque decae en el guion final.</span>
-                <span class="hl-recomendacion">Altamente recomendada para fanáticos de la ciencia ficción.</span>
+                <p><span class="hl-tecnico">Dirigida por Jane Doe en 2022 (120 min).</span></p>
+                <p><span class="hl-trama">La película narra la travesía de un científico en búsqueda de agua limpia.</span></p>
+                <p><span class="hl-critico">Destaca por su impresionante banda sonora, aunque decae en el guion final.</span></p>
+                <p><span class="hl-recomendacion">Altamente recomendada para fanáticos de la ciencia ficción.</span></p>
             </div>
         </section>
 
@@ -179,12 +185,16 @@
             <h2>Tipos de Reseña</h2>
             <div class="cards-3d-container">
                 <div class="card-3d" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front">Informativa</div>
-                    <div class="card-back">Enfoque puramente descriptivo sin juicios marcados.</div>
+                    <div class="card-inner">
+                        <div class="card-front">Informativa</div>
+                        <div class="card-back">Enfoque puramente descriptivo sin juicios marcados.</div>
+                    </div>
                 </div>
                 <div class="card-3d" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front">Crítica</div>
-                    <div class="card-back">Analiza exhaustivamente valores artísticos y técnicos.</div>
+                    <div class="card-inner">
+                        <div class="card-front">Crítica</div>
+                        <div class="card-back">Analiza exhaustivamente valores artísticos y técnicos.</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -201,12 +211,12 @@
             <button class="btn-gold" style="margin-top:20px" onclick="rotateReel()">Girar Carrete</button>
         </section>
 
-        <!-- PANTALLA 13: Reproductor de Video -->
+        <!-- PANTALLA 13: Reproductor de Video Local -->
         <section class="screen" id="screen-13">
             <h2>Proyección de Muestra</h2>
             <div class="cinema-screen">
                 <video controls width="100%">
-                    <source src="video/sample.mp4" type="video/mp4">
+                    <source src="sample.mp4" type="video/mp4">
                     Tu navegador no soporta el reproductor de video local.
                 </video>
             </div>
@@ -224,13 +234,14 @@
 
     </main>
 
-    <!-- NAVEGACIÓN GLOBAL (PANTALLAS > 1) -->
+    <!-- NAVEGACIÓN GLOBAL -->
     <footer id="nav-footer" class="hidden">
         <button id="btn-prev" class="btn-nav" onclick="prevScreen()">❮ Anterior</button>
         <span id="screen-indicator">Pantalla 1 / 14</span>
         <button id="btn-next" class="btn-nav" onclick="nextScreen()">Siguiente ❯</button>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- JavaScript en la raíz -->
+    <script src="main.js"></script>
 </body>
 </html>
