@@ -3,691 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cine y Literatura: Los Primeros Escritos</title>
+    <title>Lengua y Literatura - La Reseña Cinematográfica</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="film-strip-top"></div>
 
-    <div class="app-container">
-        <!-- Pantalla 1: Inicio -->
-        <section id="screen-1" class="screen active">
-            <div class="cinema-bg">
-                <div class="curtains"></div>
-                <div class="lights"></div>
-                <div class="projector-beam"></div>
-            </div>
-            <div class="content-box">
-                <span class="badge">Lengua y Literatura</span>
-                <h1>Los Primeros Escritos</h1>
-                <h2>Lectura de reseñas de películas</h2>
-                <div class="claqueta-icon">🎬</div>
-                <button class="btn-primary" onclick="App.nextScreen()">Comenzar</button>
+    <!-- BARRA SUPERIOR: CINTA DE PELÍCULA Y SONIDO -->
+    <header class="film-header">
+        <div class="film-strip"></div>
+        <div class="header-controls">
+            <button id="sound-toggle" class="btn-gold">🔊 Sonido: ON</button>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL DE PANTALLAS -->
+    <main id="app-container">
+
+        <!-- PANTALLA 1: Inicio -->
+        <section class="screen active" id="screen-1">
+            <div class="curtains"></div>
+            <div class="hero-content">
+                <h1 class="glow-red">Lengua y Literatura</h1>
+                <h2 class="glow-gold">Los primeros escritos</h2>
+                <h3>Subtema: Lectura de reseñas de películas</h3>
+                <div class="clapperboard-icon">🎬</div>
+                <button class="btn-start btn-gold" onclick="nextScreen()">Comenzar</button>
             </div>
         </section>
 
-        <!-- Pantalla 2: Tres puntos interactivos -->
-        <section id="screen-2" class="screen">
-            <h2>Descubre los elementos ocultos</h2>
-            <p class="subtitle">Haz clic en cada punto para revelar el contenido.</p>
-            <div class="interactive-points">
-                <div class="point" onclick="App.revealPoint(this, 1)"><span>1</span><div class="img-container"><img src="" alt="Contenedor transparente"></div></div>
-                <div class="point" onclick="App.revealPoint(this, 2)"><span>2</span><div class="img-container"><img src="" alt="Contenedor transparente"></div></div>
-                <div class="point" onclick="App.revealPoint(this, 3)"><span>3</span><div class="img-container"><img src="" alt="Contenedor transparente"></div></div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button id="next-2" class="btn-primary" disabled onclick="App.nextScreen()">Siguiente</button>
+        <!-- PANTALLA 2: Tres Puntos Interactivos -->
+        <section class="screen" id="screen-2">
+            <h2>Descubre los elementos centrales</h2>
+            <p>Haz clic en los 3 puntos para continuar.</p>
+            <div class="dots-container">
+                <div class="interactive-dot" onclick="revealDot(this, 1)">
+                    <span class="dot-num">1</span>
+                    <img src="img/placeholder1.png" alt="Elemento 1" class="img-hidden">
+                </div>
+                <div class="interactive-dot" onclick="revealDot(this, 2)">
+                    <span class="dot-num">2</span>
+                    <img src="img/placeholder2.png" alt="Elemento 2" class="img-hidden">
+                </div>
+                <div class="interactive-dot" onclick="revealDot(this, 3)">
+                    <span class="dot-num">3</span>
+                    <img src="img/placeholder3.png" alt="Elemento 3" class="img-hidden">
+                </div>
             </div>
         </section>
 
-        <!-- Pantalla 3: Introducción teórica -->
-        <section id="screen-3" class="screen">
-            <h2>La reseña cinematográfica</h2>
+        <!-- PANTALLA 3: Introducción -->
+        <section class="screen" id="screen-3">
+            <h1 class="glow-gold">La Reseña Cinematográfica</h1>
             <h3>Aprendamos a leer, comprender y valorar una reseña</h3>
             <div class="glass-card">
-                <p>La reseña no es solo un resumen, es un puente analítico entre la obra audiovisual y el espectador crítico.</p>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
+                <p>Una reseña combina síntesis objetiva con un juicio crítico personal fundamentado.</p>
             </div>
         </section>
 
-        <!-- Pantalla 4: Tarjetas 3D -->
-        <section id="screen-4" class="screen">
-            <h2>Funciones Principales</h2>
-            <div class="cards-container">
+        <!-- PANTALLA 4: Tarjetas 3D (Informa, Resume, Valora) -->
+        <section class="screen" id="screen-4">
+            <h2>Propósitos de la Reseña</h2>
+            <div class="cards-3d-container">
                 <div class="card-3d" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face front">Informa</div>
-                    <div class="card-face back">Aporta datos precisos sobre la obra y su contexto de producción.</div>
+                    <div class="card-front">Informa</div>
+                    <div class="card-back">Aporta datos clave sobre el director, año y producción.</div>
                 </div>
                 <div class="card-3d" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face front">Resume</div>
-                    <div class="card-face back">Sintetiza la propuesta narrativa sin revelar el desenlace absoluto.</div>
+                    <div class="card-front">Resume</div>
+                    <div class="card-back">Sintetiza los aspectos esenciales de la trama sin revelarla completa.</div>
                 </div>
                 <div class="card-3d" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face front">Valora</div>
-                    <div class="card-face back">Emite un juicio crítico fundamentado sobre la calidad estética.</div>
+                    <div class="card-front">Valora</div>
+                    <div class="card-back">Ofrece una opinión fundamentada sobre la calidad técnica y narrativa.</div>
                 </div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
             </div>
         </section>
 
-        <!-- Pantalla 5: Sobres interactivos -->
-        <section id="screen-5" class="screen">
-            <h2>Anatomía de la Reseña</h2>
-            <div class="envelopes-grid">
-                <div class="envelope" onclick="App.openEnvelope(this, 'Datos técnicos')"><span>Datos técnicos</span></div>
-                <div class="envelope" onclick="App.openEnvelope(this, 'Trama')"><span>Trama</span></div>
-                <div class="envelope" onclick="App.openEnvelope(this, 'Juicio crítico')"><span>Juicio crítico</span></div>
-                <div class="envelope" onclick="App.openEnvelope(this, 'Recomendación')"><span>Recomendación</span></div>
-            </div>
-            <div id="envelope-output" class="output-box"></div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
+        <!-- PANTALLA 5: Sobres Interactivos -->
+        <section class="screen" id="screen-5">
+            <h2>Estructura General</h2>
+            <div class="envelopes-container">
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-title">📁 Datos Técnicos</div>
+                    <div class="envelope-content">Ficha técnica principal de la obra.</div>
+                </div>
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-title">📁 Trama</div>
+                    <div class="envelope-content">Síntesis argumental básica.</div>
+                </div>
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-title">📁 Juicio Crítico</div>
+                    <div class="envelope-content">Análisis técnico y artístico.</div>
+                </div>
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-title">📁 Recomendación</div>
+                    <div class="envelope-content">Veredicto final del autor.</div>
+                </div>
             </div>
         </section>
 
-        <!-- Pantalla 6: Claqueta interactiva -->
-        <section id="screen-6" class="screen">
-            <h2>Ficha Técnica Interactiva</h2>
-            <div class="interactive-claqueta" onclick="App.toggleClaqueta()">
-                <div class="claq-top">🎬 CLAC</div>
-                <div class="claq-body">
-                    <p>Haz clic para desplegar</p>
-                    <ul id="claqueta-details" class="hidden">
-                        <li>Director: Autoría principal</li>
-                        <li>Año: Contexto temporal</li>
-                        <li>Género: Categoría estética</li>
-                        <li>Duración: Metraje de la obra</li>
+        <!-- PANTALLA 6: Claqueta Interactiva -->
+        <section class="screen" id="screen-6">
+            <h2>Ficha Técnica (La Claqueta)</h2>
+            <div class="clapperboard-interactive" onclick="toggleClapper()">
+                <div class="clapper-top">🎬 Clic para desplegar</div>
+                <div class="clapper-body hidden" id="clapper-info">
+                    <p><strong>Director:</strong> Cristopher Nolan</p>
+                    <p><strong>Año:</strong> 2023</p>
+                    <p><strong>Género:</strong> Biográfico / Drama</p>
+                    <p><strong>Duración:</strong> 180 min</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 7: Carrete de Película (Trama) -->
+        <section class="screen" id="screen-7">
+            <h2>Estructura de la Trama</h2>
+            <div class="film-reel">
+                <div class="frame"><span>1. Inicio</span><p>Presentación de personajes y contexto.</p></div>
+                <div class="frame"><span>2. Nudo</span><p>Conflicto o desafío principal.</p></div>
+                <div class="frame"><span>3. Clímax</span><p>Punto de máxima tensión.</p></div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 8: Balanza de Valoración -->
+        <section class="screen" id="screen-8">
+            <h2>Juicio Crítico: La Balanza</h2>
+            <div class="balance-container">
+                <div class="balance-side side-positive">
+                    <h3>Aspectos Positivos</h3>
+                    <ul>
+                        <li>Actuaciones destacadas</li>
+                        <li>Excelente fotografía</li>
+                    </ul>
+                </div>
+                <div class="balance-side side-negative">
+                    <h3>Aspectos por Mejorar</h3>
+                    <ul>
+                        <li>Ritmo lento en el segundo acto</li>
+                        <li>Mezcla de audio confusa</li>
                     </ul>
                 </div>
             </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
-            </div>
         </section>
 
-        <!-- Pantalla 7: Carrete de película -->
-        <section id="screen-7" class="screen">
-            <h2>Secuencia Narrativa</h2>
-            <div class="film-reel-horizontal">
-                <div class="frame"><span>Planteamiento</span><p>Presentación de personajes y conflicto inicial.</p></div>
-                <div class="frame"><span>Nudo</span><p>Desarrollo de tensiones y puntos de giro.</p></div>
-                <div class="frame"><span>Desenlace</span><p>Resolución de conflictos y cierre temático.</p></div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
-            </div>
-        </section>
-
-        <!-- Pantalla 8: Balanza interactiva -->
-        <section id="screen-8" class="screen">
-            <h2>Valoración Crítica</h2>
-            <div class="scale-container">
-                <div class="scale-side" onclick="App.showScaleInfo('positive')">
-                    <h3>Aspectos Positivos</h3>
-                    <p>Innovación, actuaciones, dirección de fotografía.</p>
-                </div>
-                <div class="scale-pivot">⚖️</div>
-                <div class="scale-side" onclick="App.showScaleInfo('negative')">
-                    <h3>Aspectos por Mejorar</h3>
-                    <p>Ritmo, baches argumentales, coherencia.</p>
+        <!-- PANTALLA 9: Pergamino Editable -->
+        <section class="screen" id="screen-9">
+            <h2>Redacción de la Reseña</h2>
+            <div class="scroll-unroll">
+                <div class="scroll-content" contenteditable="true">
+                    Escribe o edita aquí el borrador de tu propia reseña cinematográfica...
                 </div>
             </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
-            </div>
         </section>
 
-        <!-- Pantalla 9: Pergamino editable -->
-        <section id="screen-9" class="screen">
-            <h2>Construcción Escrita</h2>
-            <div class="scroll-container">
-                <div class="scroll-handle top"></div>
-                <div class="scroll-content">
-                    <textarea contenteditable="true" placeholder="Escribe o edita tu reseña cinematográfica aquí..."></textarea>
-                </div>
-                <div class="scroll-handle bottom"></div>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
-            </div>
-        </section>
-
-        <!-- Pantalla 10: Botones de resaltado -->
-        <section id="screen-10" class="screen">
-            <h2>Estructura en Texto</h2>
+        <!-- PANTALLA 10: Resaltado de Elementos -->
+        <section class="screen" id="screen-10">
+            <h2>Análisis de Texto</h2>
             <div class="highlight-controls">
-                <button onclick="App.highlight('tech')">Datos técnicos</button>
-                <button onclick="App.highlight('plot')">Trama</button>
-                <button onclick="App.highlight('crit')">Juicio crítico</button>
-                <button onclick="App.highlight('reco')">Recomendación</button>
+                <button onclick="highlightText('tecnico')">Datos técnicos</button>
+                <button onclick="highlightText('trama')">Trama</button>
+                <button onclick="highlightText('critico')">Juicio crítico</button>
+                <button onclick="highlightText('recomendacion')">Recomendación</button>
             </div>
-            <div class="sample-text-box" id="sample-text">
-                <span data-type="tech">Film X (2026) dirigida por A. B.</span> <span data-type="plot">narra la odisea de un grupo en contextos limítrofes.</span> <span data-type="crit">Destaca por su pulso visual, aunque decae en su segundo acto.</span> <span data-type="reco">Imprescindible para amantes del cine de autor.</span>
-            </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
+            <div class="sample-text" id="sample-review">
+                <span class="hl-tecnico">Dirigida por Jane Doe en 2022 (120 min).</span>
+                <span class="hl-trama">La película narra la travesía de un científico en búsqueda de agua limpia.</span>
+                <span class="hl-critico">Destaca por su impresionante banda sonora, aunque decae en el guion final.</span>
+                <span class="hl-recomendacion">Altamente recomendada para fanáticos de la ciencia ficción.</span>
             </div>
         </section>
 
-        <!-- Pantalla 11: Cartas 3D adicionales -->
-        <section id="screen-11" class="screen">
-            <h2>Profundización Conceptual</h2>
-            <div class="cards-container">
+        <!-- PANTALLA 11: Cartas 3D -->
+        <section class="screen" id="screen-11">
+            <h2>Tipos de Reseña</h2>
+            <div class="cards-3d-container">
                 <div class="card-3d" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face front">Estilo</div>
-                    <div class="card-face back">El sello personal del director impreso en la puesta en escena.</div>
+                    <div class="card-front">Informativa</div>
+                    <div class="card-back">Enfoque puramente descriptivo sin juicios marcados.</div>
                 </div>
                 <div class="card-3d" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face front">Subtexto</div>
-                    <div class="card-face back">Los mensajes implícitos detrás de los diálogos y la trama visible.</div>
+                    <div class="card-front">Crítica</div>
+                    <div class="card-back">Analiza exhaustivamente valores artísticos y técnicos.</div>
                 </div>
             </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
-            </div>
         </section>
 
-        <!-- Pantalla 12: Carrete giratorio -->
-        <section id="screen-12" class="screen">
-            <h2>Componentes Clave</h2>
-            <div class="rotating-wheel" onclick="this.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)'">
-                <div class="wheel-center">Girar</div>
+        <!-- PANTALLA 12: Carrete Giratorio -->
+        <section class="screen" id="screen-12">
+            <h2>Componentes Principales</h2>
+            <div class="rotary-reel">
+                <div class="reel-item active-reel">1. Encabezado</div>
+                <div class="reel-item">2. Resumen</div>
+                <div class="reel-item">3. Crítica</div>
+                <div class="reel-item">4. Conclusión</div>
             </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
-            </div>
+            <button class="btn-gold" style="margin-top:20px" onclick="rotateReel()">Girar Carrete</button>
         </section>
 
-        <!-- Pantalla 13: Pantalla de cine (Video) -->
-        <section id="screen-13" class="screen">
-            <h2>Proyección Audiovisual</h2>
-            <div class="cinema-screen-container">
-                <video controls>
+        <!-- PANTALLA 13: Reproductor de Video -->
+        <section class="screen" id="screen-13">
+            <h2>Proyección de Muestra</h2>
+            <div class="cinema-screen">
+                <video controls width="100%">
                     <source src="video/sample.mp4" type="video/mp4">
-                    Tu navegador no soporta video local.
+                    Tu navegador no soporta el reproductor de video local.
                 </video>
             </div>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.nextScreen()">Siguiente</button>
-            </div>
         </section>
 
-        <!-- Pantalla 14: Rompecabezas / Conclusión -->
-        <section id="screen-14" class="screen">
-            <h2>Conclusión del Módulo</h2>
-            <p>Arma mentalmente la idea final: La reseña valora la obra.</p>
-            <div class="nav-buttons">
-                <button class="btn-secondary" onclick="App.prevScreen()">Anterior</button>
-                <button class="btn-primary" onclick="App.resetApp()">Volver al inicio</button>
+        <!-- PANTALLA 14: Rompecabezas Conclusión -->
+        <section class="screen" id="screen-14">
+            <h2>Conclusión</h2>
+            <div class="puzzle-container">
+                <div class="puzzle-piece" onclick="solvePuzzle(this)">Pieza 1: Leer con criterio</div>
+                <div class="puzzle-piece" onclick="solvePuzzle(this)">Pieza 2: Valorar el arte</div>
             </div>
+            <button class="btn-gold hidden" id="btn-restart" onclick="goToScreen(1)" style="margin-top:30px">Volver al inicio</button>
         </section>
-    </div>
 
-    <div class="film-strip-bottom"></div>
+    </main>
 
-    <script src="js/app.js"></script>
+    <!-- NAVEGACIÓN GLOBAL (PANTALLAS > 1) -->
+    <footer id="nav-footer" class="hidden">
+        <button id="btn-prev" class="btn-nav" onclick="prevScreen()">❮ Anterior</button>
+        <span id="screen-indicator">Pantalla 1 / 14</span>
+        <button id="btn-next" class="btn-nav" onclick="nextScreen()">Siguiente ❯</button>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
-
-:root {
-    --bg-color: #050505;
-    --primary-red: #b30000;
-    --accent-gold: #d4af37;
-    --text-color: #f1f1f1;
-    --glass-bg: rgba(20, 20, 20, 0.75);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, sans-serif;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-x: hidden;
-}
-
-.film-strip-top, .film-strip-bottom {
-    height: 25px;
-    background: repeating-linear-gradient(90deg, #111, #111 30px, var(--accent-gold) 30px, var(--accent-gold) 35px);
-    border-top: 2px solid var(--accent-gold);
-    border-bottom: 2px solid var(--accent-gold);
-}
-
-.app-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 2rem;
-}
-
-.screen {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 900px;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-.screen.active {
-    display: flex;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-h1 { font-size: 3rem; color: var(--accent-gold); margin-bottom: 0.5rem; text-shadow: 0 0 10px rgba(212,175,55,0.4); }
-h2 { font-size: 2rem; color: var(--text-color); margin-bottom: 1.5rem; border-bottom: 2px solid var(--primary-red); padding-bottom: 0.5rem; }
-h3 { font-size: 1.25rem; color: var(--accent-gold); margin-bottom: 1rem; }
-p, .subtitle { font-size: 1.1rem; color: #ccc; margin-bottom: 2rem; }
-
-.badge {
-    background: var(--primary-red);
-    color: white;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
-    display: inline-block;
-}
-
-.btn-primary, .btn-secondary {
-    padding: 0.75rem 2rem;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background: var(--primary-red);
-    color: white;
-    box-shadow: 0 0 15px rgba(179,0,0,0.5);
-}
-
-.btn-primary:hover { background: #d90000; transform: scale(1.05); }
-.btn-primary:disabled { background: #444; color: #777; cursor: not-allowed; box-shadow: none; transform: none; }
-
-.btn-secondary {
-    background: transparent;
-    color: var(--accent-gold);
-    border: 1px solid var(--accent-gold);
-}
-
-.btn-secondary:hover { background: rgba(212,175,55,0.1); }
-
-.nav-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212,175,55,0.2);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-/* Pantalla 2 */
-.interactive-points {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.point {
-    width: 80px;
-    height: 80px;
-    background: var(--primary-red);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    box-shadow: 0 0 15px var(--primary-red);
-    transition: transform 0.3s;
-}
-
-.point:hover { transform: scale(1.1); }
-.point.revealed { background: var(--accent-gold); }
-.point .img-container { display: none; }
-
-/* Pantalla 4 & 11: Tarjetas 3D */
-.cards-container {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.card-3d {
-    width: 220px;
-    height: 140px;
-    perspective: 1000px;
-    cursor: pointer;
-}
-
-.card-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    border-radius: 10px;
-    border: 1px solid var(--accent-gold);
-    background: var(--glass-bg);
-    transition: transform 0.6s;
-}
-
-.card-face.front { color: var(--accent-gold); font-weight: bold; }
-.card-face.back { background: var(--primary-red); color: white; transform: rotateY(180deg); }
-.card-3d.flipped .front { transform: rotateY(180deg); }
-.card-3d.flipped .back { transform: rotateY(360deg); }
-
-/* Pantalla 5 */
-.envelopes-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.envelope {
-    background: #1a1a1a;
-    border: 1px dashed var(--accent-gold);
-    padding: 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.envelope:hover { background: #252525; }
-.output-box { min-height: 50px; color: var(--accent-gold); font-style: italic; }
-
-/* Pantalla 6 */
-.interactive-claqueta {
-    background: #111;
-    border: 2px solid var(--accent-gold);
-    border-radius: 10px;
-    padding: 2rem;
-    cursor: pointer;
-    width: 300px;
-}
-
-.claqueta-details.hidden { display: none; }
-.claqueta-details { list-style: none; margin-top: 1rem; text-align: left; }
-
-/* Pantalla 7 */
-.film-reel-horizontal {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    padding: 1rem;
-}
-
-.frame {
-    background: #111;
-    border: 2px solid var(--accent-gold);
-    min-width: 200px;
-    padding: 1.5rem;
-    border-radius: 6px;
-}
-
-.frame span { color: var(--accent-gold); font-weight: bold; display: block; margin-bottom: 0.5rem; }
-
-/* Pantalla 8 */
-.scale-container {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.scale-side {
-    background: var(--glass-bg);
-    border: 1px solid var(--accent-gold);
-    padding: 2rem;
-    border-radius: 10px;
-    cursor: pointer;
-    flex: 1;
-}
-
-.scale-pivot { font-size: 2rem; }
-
-/* Pantalla 9 */
-.scroll-container {
-    width: 100%;
-    max-width: 600px;
-    background: #2a1a08;
-    border: 4px solid var(--accent-gold);
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.scroll-content textarea {
-    width: 100%;
-    height: 150px;
-    background: transparent;
-    border: none;
-    color: #f1f1f1;
-    resize: none;
-    font-size: 1rem;
-}
-
-.scroll-content textarea:focus { outline: none; }
-
-/* Pantalla 10 */
-.highlight-controls {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.highlight-controls button {
-    background: #222;
-    color: var(--accent-gold);
-    border: 1px solid var(--accent-gold);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.sample-text-box {
-    background: var(--glass-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    line-height: 1.6;
-}
-
-.sample-text-box span.highlighted {
-    background: var(--primary-red);
-    color: white;
-    padding: 0.2rem 0.4rem;
-    border-radius: 4px;
-}
-
-/* Pantalla 12 */
-.rotating-wheel {
-    width: 150px;
-    height: 150px;
-    border: 6px dashed var(--accent-gold);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
-    margin: 0 auto;
-}
-
-/* Pantalla 13 */
-.cinema-screen-container {
-    background: black;
-    border: 4px solid #333;
-    border-radius: 8px;
-    overflow: hidden;
-    max-width: 600px;
-    width: 100%;
-}
-
-.cinema-screen-container video { width: 100%; display: block; }
-
-/**
- * Lógica modular para el Sitio Web Interactivo Offline
- * Cumple con el almacenamiento local, navegación y estados interactivos.
- */
-
-const App = (() => {
-    let currentScreen = 1;
-    const totalScreens = 14;
-    let revealedPointsCount = 0;
-
-    const init = () => {
-        loadState();
-        showScreen(currentScreen);
-    };
-
-    const showScreen = (screenIndex) => {
-        document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
-        const target = document.getElementById(screen-${screenIndex});
-        if (target) {
-            target.classList.add('active');
-            currentScreen = screenIndex;
-            saveState();
-        }
-    };
-
-    const nextScreen = () => {
-        if (currentScreen < totalScreens) {
-            showScreen(currentScreen + 1);
-        }
-    };
-
-    const prevScreen = () => {
-        if (currentScreen > 1) {
-            showScreen(currentScreen - 1);
-        }
-    };
-
-    const saveState = () => {
-        try {
-            localStorage.setItem('cine_lit_screen', currentScreen);
-        } catch (e) {
-            console.warn('LocalStorage no disponible.');
-        }
-    };
-
-    const loadState = () => {
-        try {
-            const saved = localStorage.getItem('cine_lit_screen');
-            if (saved) {
-                currentScreen = parseInt(saved, 10);
-            }
-        } catch (e) {
-            console.warn('No se pudo leer LocalStorage.');
-        }
-    };
-
-    const resetApp = () => {
-        currentScreen = 1;
-        revealedPointsCount = 0;
-        localStorage.clear();
-        showScreen(1);
-    };
-
-    // Interacciones específicas de pantallas
-    const revealPoint = (element, id) => {
-        if (!element.classList.contains('revealed')) {
-            element.classList.add('revealed');
-            revealedPointsCount++;
-            if (revealedPointsCount === 3) {
-                document.getElementById('next-2').removeAttribute('disabled');
-            }
-        }
-    };
-
-    const openEnvelope = (element, type) => {
-        const output = document.getElementById('envelope-output');
-        const contents = {
-            'Datos técnicos': 'Incluye título original, año, país, director y reparto.',
-            'Trama': 'Síntesis argumental libre de spoilers mayores.',
-            'Juicio crítico': 'Análisis estético, interpretativo y formal de la obra.',
-            'Recomendación': 'Sugerencia directa al público objetivo.'
-        };
-        output.textContent = contents[type] || '';
-    };
-
-    const toggleClaqueta = () => {
-        const details = document.getElementById('claqueta-details');
-        details.classList.toggle('hidden');
-    };
-
-    const showScaleInfo = (side) => {
-        alert(side === 'positive' ? 'Los aspectos positivos valoran los aciertos formales.' : 'Los aspectos a mejorar señalan las debilidades argumentales.');
-    };
-
-    const highlight = (type) => {
-        document.querySelectorAll('#sample-text span').forEach(el => {
-            if (el.getAttribute('data-type') === type) {
-                el.classList.toggle('highlighted');
-            } else {
-                el.classList.remove('highlighted');
-            }
-        });
-    };
-
-    return {
-        init,
-        nextScreen,
-        prevScreen,
-        resetApp,
-        revealPoint,
-        openEnvelope,
-        toggleClaqueta,
-        showScaleInfo,
-        highlight
-    };
-})();
-
-document.addEventListener('DOMContentLoaded', App.init);
